@@ -1,7 +1,6 @@
 import { randomUUID } from "node:crypto";
 import type { AgentWorkspace, ApprovalDecision, ApprovalOutcome, Draft, EvidenceRef, OperationalEvent, TaskState, TaskSummary, ToolCall, ToolName, TraceEvent, UserRole } from "./contracts";
 import type { RetrievedChunk } from "./corpus/types";
-import { getSeedCorpusService } from "./corpus/service";
 import { inspectQuestion, inspectRetrievedChunk, isPiiReason } from "./guardrails";
 import { citationFingerprint, fingerprint, securitySecret } from "./security";
 
@@ -101,8 +100,8 @@ export class AgentCoordinator {
   private readonly secret: string;
   private readonly maxSteps: number;
 
-  constructor(options: { service?: AgentService; secret?: string; maxSteps?: number } = {}) {
-    this.service = options.service ?? getSeedCorpusService();
+  constructor(options: { service: AgentService; secret?: string; maxSteps?: number }) {
+    this.service = options.service;
     this.secret = options.secret ?? securitySecret();
     this.maxSteps = options.maxSteps ?? MAX_AGENT_STEPS;
   }
@@ -303,7 +302,7 @@ export class AgentCoordinator {
 let coordinator: AgentCoordinator | undefined;
 export async function getAgentCoordinator(): Promise<AgentCoordinator> {
   if (coordinator) return coordinator;
-  const { getCorpusService } = await import("./corpus/service");
+  const { getCorpusService } = await import("./corpus/factory");
   coordinator = new AgentCoordinator({ service: await getCorpusService() });
   return coordinator;
 }

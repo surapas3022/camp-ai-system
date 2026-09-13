@@ -1,4 +1,4 @@
-import { getCorpusService } from "../../../../lib/corpus/service";
+import { getCorpusService } from "../../../../lib/corpus/factory";
 import { resolveSession } from "../../../../lib/auth";
 
 export const runtime = "nodejs";

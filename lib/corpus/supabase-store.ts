@@ -84,7 +84,7 @@ export class SupabaseCorpusStore {
       viewer_role: role,
     });
     if (error) throw new Error(error.message);
-    return (data ?? []).map((row) => toRetrievedChunk(row as Record<string, unknown>));
+    return (data ?? []).map((row: Record<string, unknown>) => toRetrievedChunk(row));
   }
 
   async firstStoredVector(): Promise<number[] | null> {
@@ -309,9 +309,9 @@ export class SupabaseCorpusStore {
   }
 }
 
-export function seedSourceFile(projectRoot: string, filename: string): { path: string; filename: string } | null {
+export function seedSourceFile(filename: string): { path: string; filename: string } | null {
   const safeFilename = path.basename(filename);
-  const sourcePath = path.join(projectRoot, "data", "seed", "source-files", safeFilename);
+  const sourcePath = path.join(process.cwd(), "data", "seed", "source-files", safeFilename);
   return existsSync(sourcePath) ? { path: sourcePath, filename: safeFilename } : null;
 }
 

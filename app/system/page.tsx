@@ -286,7 +286,7 @@ function gateLabel(text: typeof copy.en | typeof copy.th, dashboard: EvaluationD
   return dashboard.gate.status === "pass" ? text.status.pass : text.status.fail;
 }
 
-function gateGroupCopy(text: typeof copy.en | typeof copy.th, id: EvaluationGateGroup): [string, string] {
+function gateGroupCopy(text: typeof copy.en | typeof copy.th, id: EvaluationGateGroup): readonly [string, string] {
   return text.gateGroups[id];
 }
 

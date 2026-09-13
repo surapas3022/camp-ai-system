@@ -1,23 +1,15 @@
-import path from "node:path";
 import type { EvaluationRun, FeedbackRecord, OperationalEvent, TaskSummary, TraceEvent, UserRole } from "../contracts";
 import type { AuditRecord, SecurityRepository } from "../security";
-import { LocalE5QueryEmbeddingProvider } from "./embeddings";
 import { readCorpusManifest } from "./manifest";
 import { seedSourceFile, SupabaseCorpusStore, type PersistedAgentWorkspace } from "./supabase-store";
 import type { CorpusManifest, DocumentDetail, DocumentSummary, RetrievedChunk } from "./types";
 
 export class SupabaseCorpusService implements SecurityRepository {
   readonly manifest: CorpusManifest;
-  readonly projectRoot: string;
   private readonly store = new SupabaseCorpusStore();
-  private readonly embeddings: LocalE5QueryEmbeddingProvider | null;
 
-  constructor(options: { projectRoot?: string } = {}) {
-    this.projectRoot = path.resolve(options.projectRoot ?? process.cwd());
-    this.manifest = readCorpusManifest(this.projectRoot);
-    this.embeddings = process.env.VERCEL ? null : new LocalE5QueryEmbeddingProvider(
-      process.env.SECURE_RAG_MODEL_CACHE?.trim() || path.join(this.projectRoot, "data", "model-cache"),
-    );
+  constructor() {
+    this.manifest = readCorpusManifest();
   }
 
   close() { /* HTTP client has no persistent handle. */ }
@@ -33,20 +25,16 @@ export class SupabaseCorpusService implements SecurityRepository {
 
   async getSourceFile(id: string): Promise<{ path: string; filename: string } | null> {
     const filename = await this.store.getSourceFilename(id);
-    return filename ? seedSourceFile(this.projectRoot, filename) : null;
+    return filename ? seedSourceFile(filename) : null;
   }
 
   async searchKeyword(question: string, limit: number, role: UserRole = "public"): Promise<RetrievedChunk[]> {
     return this.store.searchKeyword(question, limit, role);
   }
 
+  /** Hosted retrieval stays keyword-only so Vercel does not download the E5 model. */
   async searchSemantic(question: string, limit: number, role: UserRole = "public"): Promise<RetrievedChunk[]> {
-    if (!this.embeddings) return this.searchKeyword(question, limit, role);
-    const [embedding] = await this.embeddings.embedQueries([question]);
-    if (!embedding || embedding.length !== this.manifest.embeddingDimensions) {
-      throw new Error("The local E5 query embedding has an unexpected dimension.");
-    }
-    return this.store.searchSemantic(embedding, limit, role);
+    return this.searchKeyword(question, limit, role);
   }
 
   async quarantineChunk(input: { chunkId: number; reasonCode: string; detectorVersion: string; contentFingerprint: string }): Promise<boolean> {

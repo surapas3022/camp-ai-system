@@ -13,8 +13,8 @@ export interface TokenUsage {
   completionTokens: number;
 }
 
-export function loadRateCard(projectRoot = process.cwd()): RateCard {
-  const payload = JSON.parse(readFileSync(path.join(projectRoot, "data", "evaluation", "rate-card.json"), "utf8")) as RateCard;
+export function loadRateCard(_projectRoot?: string): RateCard {
+  const payload = JSON.parse(readFileSync(path.join(process.cwd(), "data", "evaluation", "rate-card.json"), "utf8")) as RateCard;
   if (typeof payload.asOf !== "string" || !payload.asOf) throw new Error("Rate card must declare asOf.");
   if (payload.currency !== "USD") throw new Error("Rate card currency must be USD.");
   if (!Number.isFinite(payload.promptUsdPerMillion) || !Number.isFinite(payload.completionUsdPerMillion)) throw new Error("Rate card token prices are invalid.");

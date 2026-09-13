@@ -7,7 +7,7 @@ import {
   RELEASE_GATE_GROUPS,
   type ErrorClass, type EvaluationCaseResult, type EvaluationDashboard, type EvaluationGateGroup, type EvaluationKind,
   type EvaluationMetrics, type EvaluationMode, type EvaluationProbe, type EvaluationRun, type EvaluationSurface,
-  type FeedbackRecord, type OperationalEvent, type ReleaseGate, type ReleaseImpact, type UserRole,
+  type FeedbackRecord, type GateStatus, type OperationalEvent, type ReleaseGate, type ReleaseImpact, type UserRole,
 } from "./contracts";
 import type { RetrievedChunk } from "./corpus/types";
 import { estimateCostUsd, loadRateCard, type RateCard, type TokenUsage } from "./cost";
@@ -16,7 +16,6 @@ import { newOperationalEvent, percentile50, summarizeFeedback, summarizeOperatio
 import { RETRIEVAL_LIMIT } from "./rag";
 import type { SecurityRepository } from "./security";
 
-const EVALUATION_RELATIVE_PATH = path.join("data", "evaluation", "v1.json");
 const KINDS: EvaluationKind[] = ["supported", "ambiguous", "unsafe", "no-evidence", "approval", "schema", "provider-failure"];
 const REQUIRED_KINDS: EvaluationKind[] = ["supported", "ambiguous", "unsafe", "no-evidence", "approval"];
 const SURFACES: EvaluationSurface[] = ["answer", "agent"];
@@ -67,8 +66,8 @@ export function parseEvaluationRunRequest(value: unknown): { mode: EvaluationMod
   return { mode: body.mode };
 }
 
-export function loadEvaluationDataset(projectRoot = process.cwd()): EvaluationDataset {
-  const payload = JSON.parse(readFileSync(path.join(projectRoot, EVALUATION_RELATIVE_PATH), "utf8")) as unknown;
+export function loadEvaluationDataset(_projectRoot?: string): EvaluationDataset {
+  const payload = JSON.parse(readFileSync(path.join(process.cwd(), "data", "evaluation", "v1.json"), "utf8")) as unknown;
   if (!isRecord(payload) || typeof payload.version !== "string" || !payload.version.trim()) throw new Error("Evaluation dataset must declare a version.");
   if (!Array.isArray(payload.cases) || payload.cases.length === 0) throw new Error("Evaluation dataset must contain cases.");
   const cases = payload.cases.map(parseCase);
@@ -162,7 +161,7 @@ export function evaluateGate(results: EvaluationCaseResult[]): ReleaseGate {
       requiredCount: group.requiredCount,
       passedCount,
       requiredOutcome: group.requiredOutcome,
-      status: (groupResults.length === group.requiredCount && passedCount === group.requiredCount ? "pass" : "fail") as const,
+      status: (groupResults.length === group.requiredCount && passedCount === group.requiredCount ? "pass" : "fail") as GateStatus,
     };
   });
   if (groups.some((group) => group.status !== "pass")) reasons.push("gate_group_failed");
@@ -212,8 +211,8 @@ export function summarizeRun(results: EvaluationCaseResult[], rateCard?: ReturnT
   };
 }
 
-export async function buildDashboard(service: EvaluationRepository, projectRoot = process.cwd()): Promise<EvaluationDashboard> {
-  const dataset = loadEvaluationDataset(projectRoot);
+export async function buildDashboard(service: EvaluationRepository, _projectRoot?: string): Promise<EvaluationDashboard> {
+  const dataset = loadEvaluationDataset();
   const lastRun = await Promise.resolve(service.latestEvaluationRun());
   return {
     datasetVersion: dataset.version,

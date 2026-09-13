@@ -3,7 +3,7 @@ import type { GuardrailDecision, OperationalEvent, SafeAnswerStatus, UserRole } 
 import { inspectQuestion, inspectRetrievedChunk, isPiiReason } from "./guardrails";
 import { noEvidenceMessage, retrieve, toCitation, type Citation, type Language, type RetrievalMode, type RetrievalResult } from "./rag";
 import { citationFingerprint, fingerprint, newAuditRecord, securitySecret, type SecurityRepository } from "./security";
-import { getCorpusService } from "./corpus/service";
+import { getCorpusService } from "./corpus/factory";
 import { readProviderUsage } from "./cost";
 
 export interface AnswerInput { question: string; mode: RetrievalMode; language: Language; role: UserRole; }

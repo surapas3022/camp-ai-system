@@ -16,7 +16,7 @@ export class SeedCorpusService implements SecurityRepository {
 
   constructor(options: { projectRoot?: string; runtimeDir?: string; embeddings?: QueryEmbeddingProvider } = {}) {
     this.paths = bootstrapSeed(options);
-    this.manifest = readCorpusManifest(this.paths.projectRoot);
+    this.manifest = readCorpusManifest();
     this.store = new SeedCorpusStore(this.paths.databasePath);
     this.embeddings = options.embeddings ?? new LocalE5QueryEmbeddingProvider(
       process.env.SECURE_RAG_MODEL_CACHE?.trim() || path.join(this.paths.runtimeDir, "model-cache"),
@@ -104,16 +104,4 @@ let singleton: SeedCorpusService | undefined;
 export function getSeedCorpusService(): SeedCorpusService {
   singleton ??= new SeedCorpusService();
   return singleton;
-}
-
-export async function getCorpusService() {
-  const { isSupabaseConfigured } = await import("../supabase/config");
-  if (process.env.VERCEL && !isSupabaseConfigured()) {
-    throw new Error("Set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SECRET_KEY before deploying to Vercel.");
-  }
-  if (isSupabaseConfigured()) {
-    const { getSupabaseCorpusService } = await import("./supabase-service");
-    return getSupabaseCorpusService();
-  }
-  return getSeedCorpusService();
 }

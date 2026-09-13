@@ -1,5 +1,5 @@
 import { resolveSession } from "../../../../lib/auth";
-import { getCorpusService } from "../../../../lib/corpus/service";
+import { getCorpusService } from "../../../../lib/corpus/factory";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";

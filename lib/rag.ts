@@ -23,7 +23,7 @@ export const RETRIEVAL_LIMIT = 10;
 export const SEMANTIC_DISTANCE_CUTOFF = 1;
 
 export async function retrieve(question: string, mode: RetrievalMode, role: UserRole): Promise<RetrievalResult> {
-  const { getCorpusService } = await import("./corpus/service");
+  const { getCorpusService } = await import("./corpus/factory");
   const service = await getCorpusService();
   const chunks = mode === "keyword"
     ? await Promise.resolve(service.searchKeyword(question, RETRIEVAL_LIMIT, role))

@@ -1,5 +1,5 @@
 import { resolveSession } from "../../../../lib/auth";
-import { getCorpusService } from "../../../../lib/corpus/service";
+import { getCorpusService } from "../../../../lib/corpus/factory";
 import { buildDashboard, EvaluationRequestError, parseEvaluationRunRequest, runEvaluationSuite } from "../../../../lib/evaluation";
 import { securitySecret } from "../../../../lib/security";
 

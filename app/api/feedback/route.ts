@@ -1,5 +1,5 @@
 import { resolveSession } from "../../../lib/auth";
-import { getCorpusService } from "../../../lib/corpus/service";
+import { getCorpusService } from "../../../lib/corpus/factory";
 import { FeedbackRequestError, newFeedbackRecord, parseFeedbackRequest } from "../../../lib/feedback";
 import { newOperationalEvent } from "../../../lib/observability";
 import { securitySecret } from "../../../lib/security";
