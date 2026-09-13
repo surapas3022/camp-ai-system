@@ -1,0 +1,9 @@
+node_modules
+.next
+data/runtime
+data/model-cache
+.git
+.env
+.env.local
+*.log
+*.tsbuildinfo

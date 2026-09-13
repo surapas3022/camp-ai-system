@@ -1,0 +1,7 @@
+{
+  "asOf": "2026-09-13",
+  "currency": "USD",
+  "promptUsdPerMillion": 0.2,
+  "completionUsdPerMillion": 0.6,
+  "note": "Approximate dated lab rate card. Used only when provider usage tokens are present."
+}

@@ -1,0 +1,24 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3001:3000"
+    # Next.js reads .env.local from the mounted project directory.
+    # Do not use env_file here — Docker Compose treats $ in values as variable substitution
+    # and corrupts STAFF_PIN_SCRYPT_HASH.
+    environment:
+      SECURE_RAG_MODEL_CACHE: /app/data/model-cache
+      SECURE_RAG_RUNTIME_DIR: /app/data/runtime
+      WATCHPACK_POLLING: "true"
+      CHOKIDAR_USEPOLLING: "true"
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+      - runtime_data:/app/data/runtime
+      - model_cache:/app/data/model-cache
+    command: ["npm", "run", "dev", "--", "-H", "0.0.0.0"]
+
+volumes:
+  node_modules:
+  runtime_data:
+  model_cache:

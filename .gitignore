@@ -1,0 +1,10 @@
+node_modules/
+.next/
+data/runtime/
+data/model-cache/
+.env
+.env.local
+.vercel
+.supabase
+*.tsbuildinfo
+*.log

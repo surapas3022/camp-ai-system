@@ -1,0 +1,500 @@
+{
+  "corpusVersion": "1.0.0",
+  "generatedAt": "2026-09-05T00:00:00.000Z",
+  "syntheticDataOnly": true,
+  "documentCount": 48,
+  "chunkCount": 816,
+  "vectorCount": 816,
+  "pageCount": 192,
+  "publicDocumentCount": 23,
+  "staffDocumentCount": 25,
+  "adversarialFixtureCount": 5,
+  "embeddingModel": "intfloat/multilingual-e5-small",
+  "embeddingDimensions": 384,
+  "chunking": {
+    "chunkLength": 125,
+    "chunkOverlap": 25
+  },
+  "sourceFiles": [
+    {
+      "id": "student-genai-support-faq",
+      "title": "Student GenAI Support FAQ",
+      "classification": "public",
+      "sourceFilename": "student-genai-support-faq.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "published-assessment-appeals",
+      "title": "Published Assessment and Appeals Guide",
+      "classification": "public",
+      "sourceFilename": "published-assessment-appeals.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "academic-integrity-guide",
+      "title": "Academic Integrity and AI Guide",
+      "classification": "public",
+      "sourceFilename": "academic-integrity-guide.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "learner-data-privacy-notice",
+      "title": "Learner Data Privacy Notice",
+      "classification": "public",
+      "sourceFilename": "learner-data-privacy-notice.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "digital-safety-guide",
+      "title": "Digital Safety Guide",
+      "classification": "public",
+      "sourceFilename": "digital-safety-guide.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "accessibility-learning-guide",
+      "title": "Accessible Digital Learning Guide",
+      "classification": "public",
+      "sourceFilename": "accessibility-learning-guide.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "library-research-support",
+      "title": "Library Research Support Guide",
+      "classification": "public",
+      "sourceFilename": "library-research-support.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "course-handbook-extract",
+      "title": "Course Handbook Extract",
+      "classification": "public",
+      "sourceFilename": "course-handbook-extract.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "support-desk-faq",
+      "title": "Digital Support Desk FAQ",
+      "classification": "public",
+      "sourceFilename": "support-desk-faq.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "incident-reporting-public",
+      "title": "Public Incident Reporting Instructions",
+      "classification": "public",
+      "sourceFilename": "incident-reporting-public.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "public-ai-literacy",
+      "title": "AI Literacy Learning Note",
+      "classification": "public",
+      "sourceFilename": "public-ai-literacy.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "student-feedback-charter",
+      "title": "Student Feedback Charter",
+      "classification": "public",
+      "sourceFilename": "student-feedback-charter.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "remote-learning-guide",
+      "title": "Remote Learning Continuity Guide",
+      "classification": "public",
+      "sourceFilename": "remote-learning-guide.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "published-data-summary",
+      "title": "Published Learning Data Summary",
+      "classification": "public",
+      "sourceFilename": "published-data-summary.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "wellbeing-support-guide",
+      "title": "Wellbeing Support Guide",
+      "classification": "public",
+      "sourceFilename": "wellbeing-support-guide.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "open-education-resources",
+      "title": "Open Education Resources Guide",
+      "classification": "public",
+      "sourceFilename": "open-education-resources.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "student-ai-assessment-faq",
+      "title": "Student AI Assessment FAQ",
+      "classification": "public",
+      "sourceFilename": "student-ai-assessment-faq.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "service-status-guide",
+      "title": "Learning Services Status Guide",
+      "classification": "public",
+      "sourceFilename": "service-status-guide.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "public-records-guide",
+      "title": "Published Records Guide",
+      "classification": "public",
+      "sourceFilename": "public-records-guide.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "research-consent-summary",
+      "title": "Research Participation Consent Summary",
+      "classification": "public",
+      "sourceFilename": "research-consent-summary.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "staff-genai-approval",
+      "title": "Staff GenAI Use and Approval Procedure",
+      "classification": "staff",
+      "sourceFilename": "staff-genai-approval.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "data-classification-retention",
+      "title": "Data Classification and Retention Procedure",
+      "classification": "staff",
+      "sourceFilename": "data-classification-retention.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "ai-incident-runbook",
+      "title": "AI Incident Response Runbook",
+      "classification": "staff",
+      "sourceFilename": "ai-incident-runbook.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "ai-system-inventory",
+      "title": "AI System Inventory Procedure",
+      "classification": "staff",
+      "sourceFilename": "ai-system-inventory.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "vendor-ai-review",
+      "title": "Third Party AI Review Procedure",
+      "classification": "staff",
+      "sourceFilename": "vendor-ai-review.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "staff-prompt-handling",
+      "title": "Staff Prompt Handling Guidance",
+      "classification": "staff",
+      "sourceFilename": "staff-prompt-handling.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "learning-analytics-governance",
+      "title": "Learning Analytics Governance Memo",
+      "classification": "staff",
+      "sourceFilename": "learning-analytics-governance.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "assessment-moderation-workflow",
+      "title": "Assessment Moderation Workflow",
+      "classification": "staff",
+      "sourceFilename": "assessment-moderation-workflow.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "records-deletion-procedure",
+      "title": "Records Deletion Procedure",
+      "classification": "staff",
+      "sourceFilename": "records-deletion-procedure.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "security-escalation-procedure",
+      "title": "Security Escalation Procedure",
+      "classification": "staff",
+      "sourceFilename": "security-escalation-procedure.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "ai-training-plan",
+      "title": "Staff AI Risk Training Plan",
+      "classification": "staff",
+      "sourceFilename": "ai-training-plan.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "internal-audit-checklist",
+      "title": "Internal AI Audit Checklist",
+      "classification": "staff",
+      "sourceFilename": "internal-audit-checklist.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "change-management-procedure",
+      "title": "AI Change Management Procedure",
+      "classification": "staff",
+      "sourceFilename": "change-management-procedure.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "risk-register-extract",
+      "title": "AI Risk Register Extract",
+      "classification": "staff",
+      "sourceFilename": "risk-register-extract.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "governance-meeting-notes",
+      "title": "AI Governance Meeting Notes",
+      "classification": "staff",
+      "sourceFilename": "governance-meeting-notes.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "internal-support-playbook",
+      "title": "Internal Support Playbook",
+      "classification": "staff",
+      "sourceFilename": "internal-support-playbook.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "data-access-review",
+      "title": "Data Access Review Standard",
+      "classification": "staff",
+      "sourceFilename": "data-access-review.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "model-output-review",
+      "title": "Model Output Review Standard",
+      "classification": "staff",
+      "sourceFilename": "model-output-review.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "source-provenance-standard",
+      "title": "Source Provenance Standard",
+      "classification": "staff",
+      "sourceFilename": "source-provenance-standard.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "service-continuity-plan",
+      "title": "AI Service Continuity Plan",
+      "classification": "staff",
+      "sourceFilename": "service-continuity-plan.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "staff-privacy-impact-note",
+      "title": "Privacy Impact Review Note",
+      "classification": "staff",
+      "sourceFilename": "staff-privacy-impact-note.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "human-oversight-procedure",
+      "title": "Human Oversight Procedure",
+      "classification": "staff",
+      "sourceFilename": "human-oversight-procedure.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "evaluation-evidence-plan",
+      "title": "AI Evaluation Evidence Plan",
+      "classification": "staff",
+      "sourceFilename": "evaluation-evidence-plan.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": false,
+      "fixtureType": null
+    },
+    {
+      "id": "fixture-public-poisoned-source",
+      "title": "Public Knowledge Base Migration Note",
+      "classification": "public",
+      "sourceFilename": "fixture-public-poisoned-source.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": true,
+      "fixtureType": "indirect_injection"
+    },
+    {
+      "id": "fixture-public-hidden-instruction",
+      "title": "Public Search Optimisation Note",
+      "classification": "public",
+      "sourceFilename": "fixture-public-hidden-instruction.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": true,
+      "fixtureType": "indirect_injection"
+    },
+    {
+      "id": "fixture-staff-protected-memo",
+      "title": "Staff Assessment Exception Memo",
+      "classification": "staff",
+      "sourceFilename": "fixture-staff-protected-memo.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": true,
+      "fixtureType": "access_boundary"
+    },
+    {
+      "id": "fixture-misleading-claim",
+      "title": "Unverified AI Capability Claim",
+      "classification": "public",
+      "sourceFilename": "fixture-misleading-claim.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": true,
+      "fixtureType": "misleading_content"
+    },
+    {
+      "id": "fixture-policy-name-collision",
+      "title": "Assessment Data Handling Quick Note",
+      "classification": "staff",
+      "sourceFilename": "fixture-policy-name-collision.pdf",
+      "pageCount": 4,
+      "chunkCount": 17,
+      "adversarialFixture": true,
+      "fixtureType": "access_boundary"
+    }
+  ]
+}

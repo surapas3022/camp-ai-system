@@ -1,0 +1,35 @@
+{
+  "name": "ai-system-v0",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "tsx --test tests/*.test.ts",
+    "verify:secure-corpus": "node scripts/verify_secure_corpus.mjs",
+    "generate:staff-session": "node scripts/generate_staff_session.mjs",
+    "push:supabase": "node scripts/push_seed_to_supabase.mjs",
+    "check:supabase": "node scripts/check_supabase.mjs"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^4.2.0",
+    "@supabase/supabase-js": "^2.116.0",
+    "better-sqlite3": "^12.6.2",
+    "next": "16.3.4",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "sqlite-vec": "0.1.6"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "20.17.30",
+    "@types/react": "18.3.20",
+    "@types/react-dom": "18.3.7",
+    "tsx": "4.19.3",
+    "typescript": "5.8.3"
+  },
+  "engines": {
+    "node": ">=20 <23"
+  }
+}
