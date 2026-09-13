@@ -60,7 +60,7 @@ function sign(payload: string, env: Readonly<Record<string, string | undefined>>
 
 function requiredEnv(name: string, env: Readonly<Record<string, string | undefined>>): string {
   const value = env[name]?.trim();
-  if (!value) throw new Error(`Set ${name} in .env.local before enabling staff access.`);
+  if (!value) throw new Error("Staff access is not configured.");
   return value;
 }
 
@@ -80,11 +80,14 @@ function readCookie(header: string | null, name: string): string | null {
 }
 
 function parseScryptHash(value: string): { cost: number; blockSize: number; parallelization: number; salt: Buffer; hash: Buffer } {
-  const [algorithm, rawCost, rawBlockSize, rawParallelization, rawSalt, rawHash, extra] = value.split("$");
+  const encoded = value.replace(/\\\$/g, "$");
+  const [algorithm, rawCost, rawBlockSize, rawParallelization, rawSalt, rawHash, extra] = encoded.split("$");
   const cost = Number(rawCost); const blockSize = Number(rawBlockSize); const parallelization = Number(rawParallelization);
-  if (algorithm !== "scrypt" || extra || !Number.isSafeInteger(cost) || !Number.isSafeInteger(blockSize) || !Number.isSafeInteger(parallelization) || cost < 2 || blockSize < 1 || parallelization < 1 || !rawSalt || !rawHash) throw new Error("STAFF_PIN_SCRYPT_HASH must use scrypt$N$r$p$saltBase64url$hashBase64url format.");
+  if (algorithm !== "scrypt" || extra || !Number.isSafeInteger(cost) || !Number.isSafeInteger(blockSize) || !Number.isSafeInteger(parallelization) || cost < 2 || blockSize < 1 || parallelization < 1 || !rawSalt || !rawHash) {
+    throw new Error("Staff PIN configuration is invalid.");
+  }
   const salt = Buffer.from(rawSalt, "base64url"); const hash = Buffer.from(rawHash, "base64url");
-  if (!salt.length || !hash.length) throw new Error("STAFF_PIN_SCRYPT_HASH has an invalid salt or hash.");
+  if (!salt.length || !hash.length) throw new Error("Staff PIN configuration is invalid.");
   return { cost, blockSize, parallelization, salt, hash };
 }
 

@@ -30,6 +30,7 @@ async function temporaryRuntime(t: { after: (callback: () => unknown) => void })
 test("scrypt staff PIN sessions are signed, expire after eight hours, and reject tampering", async () => {
   assert.equal(await verifyStaffPin("2468", sessionEnv), true);
   assert.equal(await verifyStaffPin("wrong", sessionEnv), false);
+  assert.equal(await verifyStaffPin("2468", { ...sessionEnv, STAFF_PIN_SCRYPT_HASH: sessionEnv.STAFF_PIN_SCRYPT_HASH.replaceAll("$", "\\$") }), true);
   const now = new Date("2026-09-06T00:00:00.000Z");
   const session = createStaffSession(now, sessionEnv);
   assert.equal(resolveSession(new Request("https://example.test", { headers: { cookie: `secure_rag_staff_session=${session.token}` } }), now, sessionEnv).role, "staff");

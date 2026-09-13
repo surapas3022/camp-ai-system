@@ -23,7 +23,7 @@ export function SessionControl({ labels, onRoleChange }: { labels: SessionLabels
     try {
       const response = await fetch("/api/session", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ pin }) });
       const data = await response.json() as { role?: UserRole; error?: string };
-      if (!response.ok || data.role !== "staff") throw new Error(data.error ?? labels.unavailable);
+      if (!response.ok || data.role !== "staff") throw new Error(publicStaffError(response.status, data.error, labels.unavailable));
       updateRole("staff"); setPin(""); setShowForm(false);
     } catch (reason) { setError(reason instanceof Error ? reason.message : labels.unavailable); }
     finally { setBusy(false); }
@@ -37,4 +37,10 @@ export function SessionControl({ labels, onRoleChange }: { labels: SessionLabels
   }
 
   return <section className="session-control" aria-live="polite"><span>{labels.access}</span><strong className={`access ${role}`}>{role === "staff" ? labels.staff : labels.public}</strong>{role === "staff" ? <button className="text-button" onClick={() => void logout()} disabled={busy}>{labels.logout}</button> : showForm ? <form onSubmit={enable}><input aria-label={labels.pin} type="password" inputMode="numeric" autoComplete="current-password" value={pin} onChange={(event) => setPin(event.target.value)} placeholder={labels.pin} disabled={busy} /><button type="submit" disabled={busy || !pin}>{busy ? labels.submitting : labels.enable}</button><button type="button" className="text-button" onClick={() => { setShowForm(false); setError(""); }}>{labels.cancel}</button></form> : <button className="text-button" onClick={() => setShowForm(true)}>{labels.enable}</button>}{error ? <small className="error-message">{error}</small> : null}</section>;
+}
+
+function publicStaffError(status: number, message: string | undefined, fallback: string): string {
+  if (status !== 400 && status !== 401) return fallback;
+  if (!message || /STAFF_PIN|SESSION_SECRET|\.env|scrypt\$/i.test(message)) return fallback;
+  return message;
 }

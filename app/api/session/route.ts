@@ -20,7 +20,8 @@ export async function POST(request: Request) {
     const session = createStaffSession();
     return Response.json({ role: "staff", expiresAt: session.expiresAt }, { headers: { "Set-Cookie": sessionCookie(session.token, session.expiresAt), "Cache-Control": "no-store" } });
   } catch (error) {
-    return Response.json({ error: error instanceof Error ? error.message : "Staff access could not be enabled." }, { status: 500 });
+    console.error(error);
+    return Response.json({ error: "Staff access could not be enabled." }, { status: 500 });
   }
 }
 
